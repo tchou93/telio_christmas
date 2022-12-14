@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+    <section class="review-wrapper">
+        <h3> Proposition de cadeau pour Télio </h3>
+        <form method="post" >
+            {% csrf_token %}
+            <div class="review-body">
+                {{ t_form|crispy}}
+                <div class="buttons-cancel-send">
+                    <a href="{% url 'flux' %}" class="btn btn-primary">Annuler</a>
+                    <button class="btn btn-primary" type="submit">Envoyer</button>
+                </div>
+            </div>
+        </form>
+    </section>
+{% endblock content %}

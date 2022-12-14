@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="flux">
+    {% if tag == "flux" and user.is_authenticated %}
+        <section class="buttons-flux">
+            <a href="{% url 'create_ticket' %}" class="btn btn-primary">Ajout d'un cadeau</a>
+        </section>
+    {% endif %}
+
+    {% if all_posts %}
+        {% for post in all_posts %}
+            {% include 'reviews/ticket_snippet.html' %}
+        {% endfor %}
+    {% elif tag == "flux" %}
+        <p class="title-post"> Il n'y aucun Post dans le flux pour le moment.</p>
+    {% else %}
+        <p class="title-post"> Vous n'avez publié aucun Post pour le moment.</p>
+    {% endif %}
+</section>
+{% endblock content %}

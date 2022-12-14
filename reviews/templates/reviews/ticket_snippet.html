@@ -1,0 +1,27 @@
+{% if post.reserve %}
+    <article class="card card-notavailable">
+{% else %}
+    <article class="card">
+{% endif %}
+        <div class="card-header">
+            <p class="card-text">{{ post.title }}</p>
+            <p class="card-text">{{ post.time_created}}</p>
+        </div>
+        <div class="card-body">
+            {% if post.image_url %}
+                <img class="ticket-img" src="{{post.image_url}}" alt="image">
+            {% endif %}
+            {% if post.lien_cadeau %}
+                <a href="{{post.lien_cadeau}}"> Cliquer ici pour le lien du cadeau </a>
+            {% endif %}
+        </div>
+
+
+
+    {% if tag == "posts" %}
+        <div class="card-footer">
+            <a href="{% url 'update_ticket' post.pk %}" class="btn btn-primary">Modifier</a>
+            <a href="{% url 'delete_ticket' post.pk %}" class="btn btn-primary">Supprimer</a>
+        </div>
+    {% endif %}
+</article>
