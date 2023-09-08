@@ -12,8 +12,8 @@ jobs:
           command: |
             docker build -t telio_hpbd3:latest .
             docker build -t telio_hpbd3:${CIRCLE_SHA1} .
-            docker tag telio_HPBD:latest $DOCKER_USERNAME/telio_hpbd3:latest
-            docker tag telio_HPBD:${CIRCLE_SHA1} $DOCKER_USERNAME/telio_hpbd3:${CIRCLE_SHA1}  
+            docker tag telio_hpbd3:latest $DOCKER_USERNAME/telio_hpbd3:latest
+            docker tag telio_hpbd3:${CIRCLE_SHA1} $DOCKER_USERNAME/telio_hpbd3:${CIRCLE_SHA1}  
             echo $DOCKER_PASS | docker login -u $DOCKER_USERNAME --password-stdin
             docker push $DOCKER_USERNAME/telio_hpbd3:latest
             docker push $DOCKER_USERNAME/telio_hpbd3:${CIRCLE_SHA1}
