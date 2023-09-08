@@ -1,0 +1,45 @@
+version: 2.1
+orbs:
+  python: circleci/python@2.1.1
+  heroku: circleci/heroku@2.0.0
+jobs:
+  containerization:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Build set the tag and push the project to Docker
+          command: |
+            docker build -t telio_HPBD:latest .
+            docker build -t telio_HPBD:${CIRCLE_SHA1} .
+            docker tag telio_HPBD:latest $DOCKER_USERNAME/telio_HPBD:latest
+            docker tag telio_HPBD:${CIRCLE_SHA1} $DOCKER_USERNAME/telio_HPBD:${CIRCLE_SHA1}  
+            echo $DOCKER_PASS | docker login -u $DOCKER_USERNAME --password-stdin
+            docker push $DOCKER_USERNAME/telio_HPBD:latest
+            docker push $DOCKER_USERNAME/telio_HPBD:${CIRCLE_SHA1}
+      - run:
+          name: Run collectstatic
+          command: |
+            docker run -it --entrypoint sh $DOCKER_USERNAME/telio_HPBD:latest -c "python manage.py collectstatic --noinput"
+
+  build-deploy:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Build and push Docker image to Heroku
+          command: |
+            set -x
+            sudo curl https://cli-assets.heroku.com/install.sh | sh
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:login
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:push -a $HEROKU_APP_NAME web
+            HEROKU_API_KEY=${HEROKU_API_KEY} heroku container:release -a $HEROKU_APP_NAME web
+          
+
+workflows:
+  project_lettings:
+    jobs:
+      - containerization
+      - build-deploy:
+          requires:
+            - containerization
