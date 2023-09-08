@@ -10,17 +10,17 @@ jobs:
       - run:
           name: Build set the tag and push the project to Docker
           command: |
-            docker build -t telio_HPBD:latest .
-            docker build -t telio_HPBD:${CIRCLE_SHA1} .
-            docker tag telio_HPBD:latest $DOCKER_USERNAME/telio_HPBD:latest
-            docker tag telio_HPBD:${CIRCLE_SHA1} $DOCKER_USERNAME/telio_HPBD:${CIRCLE_SHA1}  
+            docker build -t telio_hpbd3:latest .
+            docker build -t telio_hpbd3:${CIRCLE_SHA1} .
+            docker tag telio_HPBD:latest $DOCKER_USERNAME/telio_hpbd3:latest
+            docker tag telio_HPBD:${CIRCLE_SHA1} $DOCKER_USERNAME/telio_hpbd3:${CIRCLE_SHA1}  
             echo $DOCKER_PASS | docker login -u $DOCKER_USERNAME --password-stdin
-            docker push $DOCKER_USERNAME/telio_HPBD:latest
-            docker push $DOCKER_USERNAME/telio_HPBD:${CIRCLE_SHA1}
+            docker push $DOCKER_USERNAME/telio_hpbd3:latest
+            docker push $DOCKER_USERNAME/telio_hpbd3:${CIRCLE_SHA1}
       - run:
           name: Run collectstatic
           command: |
-            docker run -it --entrypoint sh $DOCKER_USERNAME/telio_HPBD:latest -c "python manage.py collectstatic --noinput"
+            docker run -it --entrypoint sh $DOCKER_USERNAME/telio_hpbd3:latest -c "python manage.py collectstatic --noinput"
 
   build-deploy:
     machine: true
