@@ -29,6 +29,8 @@ ALLOWED_HOSTS = ["127.0.0.1",
                  "0.0.0.0",
                  "localhost"]
 
+CSRF_TRUSTED_ORIGINS = [f'{os.getenv("HEROKU_APP_NAME")}-042fd0177bc3.herokuapp.com']
+
 # Application definition
 
 INSTALLED_APPS = [
