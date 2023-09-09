@@ -26,7 +26,6 @@ DEBUG = os.getenv('DEBUG', 'True')
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ["127.0.0.1",
                  f'{os.getenv("HEROKU_APP_NAME")}-042fd0177bc3.herokuapp.com',
-                 "telioprojects.software",
                  "0.0.0.0",
                  "localhost"]
 
@@ -121,8 +120,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+# STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_URL = '/static/'
+if not DEBUG:
+    from litreview.cdn.conf import (
+        AWS_ACCESS_KEY_ID,
+        AWS_SECRET_ACCESS_KEY,
+        AWS_STORAGE_BUCKET_NAME,
+        AWS_S3_ENDPOINT_URL,
+        AWS_S3_OBJECT_PARAMETERS,
+        AWS_LOCATION,
+        STATICFILES_STORAGE,
+        DEFAULT_FILE_STORAGE,
+    )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = Path(BASE_DIR, 'media')
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
