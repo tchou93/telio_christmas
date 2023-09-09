@@ -35,9 +35,13 @@ def create_ticket(request):
     if request.method == 'POST':
         t_form = TicketForm(request.POST, request.FILES)
         if t_form.is_valid():
+            try:
+                image = request.FILES['image']
+            except MultiValueDictKeyError:
+                image = None
             Ticket.objects.create(title=request.POST['title'],
                                   lien_cadeau=request.POST['lien_cadeau'],
-                                  image_url=request.POST['image_url'],
+                                  image=image,
                                   user=request.user)
             return redirect('flux')
     else:
