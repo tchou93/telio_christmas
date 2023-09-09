@@ -26,7 +26,7 @@ DEBUG = os.getenv('DEBUG', 'True')
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ["127.0.0.1",
                  f'{os.getenv("HEROKU_APP_NAME")}-042fd0177bc3.herokuapp.com',
-                 "http://telioprojects.software",
+                 "telioprojects.software",
                  "0.0.0.0",
                  "localhost"]
 
