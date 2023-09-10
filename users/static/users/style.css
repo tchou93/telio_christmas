@@ -22,8 +22,8 @@ body {
 header {
     display: flex;
     justify-content:space-around;
-    position:sticky;
-    z-index: 3000;
+    /*position:sticky;
+    z-index: 3000;*/
     align-items: center;
     height: 12rem;
     background-image: url("https://teliobirthday.fra1.cdn.digitaloceanspaces.com/photos_website/banniere_telio.jpg");
@@ -31,7 +31,7 @@ header {
     background-repeat: repeat-x; /* Répéter seulement horizontalement */
     background-position: center center;
     width: 100%;
-    top: 0;
+    /*top: 0;*/
 }
 
 .title-telio {
@@ -175,7 +175,7 @@ main {
 }
 
 .ticket-img {
-    width: 50%;
+    width: 70%;
     object-fit: cover;
 }
 
@@ -285,10 +285,15 @@ h3 {
     }
 
     .card {
-        width: 100%;
+        width: 70%;
     }
     body {
         background-size: contain; /* Utilisez une autre taille pour les écrans mobiles si nécessaire */
+    }
+
+    .ticket-img {
+        width: 100%;
+        object-fit: cover;
     }
 /*    body {
         background-size: 400px;
