@@ -1,9 +1,9 @@
 import os
 import sys
 from pathlib import Path
-
+from dotenv import load_dotenv
 from django.core.management.utils import get_random_secret_key
-
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'True')
+DEBUG = (os.getenv('DEBUG', 'True') == 'True')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # if len(sys.argv) >= 2 and sys.argv[1] == 'runserver':
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'reviews',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -56,8 +57,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'litreview.urls'
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 TEMPLATES = [
     {
@@ -124,7 +123,24 @@ USE_TZ = True
 
 # STATIC_URL = 'static/'
 # STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+# STATIC_URL = '/static/'
+#
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
+# STATIC_ROOT = BASE_DIR / "staticfiles-cdn"
+# MEDIA_ROOT = BASE_DIR / "staticfiles-cdn" / "uploads"
+# if not DEBUG:
+
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = Path(BASE_DIR, 'media')
+# else:
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#     MEDIA_URL = "/media/"
+#     MEDIA_ROOT = Path(BASE_DIR, 'media')
+
 STATIC_URL = '/static/'
+
 if not DEBUG:
     from litreview.cdn.conf import (
         AWS_ACCESS_KEY_ID,
@@ -136,12 +152,11 @@ if not DEBUG:
         STATICFILES_STORAGE,
         DEFAULT_FILE_STORAGE,
     )
+    # print("test")
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_URL = "/media/"
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_ROOT = Path(BASE_DIR, 'media')
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

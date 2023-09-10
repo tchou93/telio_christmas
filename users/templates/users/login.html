@@ -2,17 +2,18 @@
 {% block content %}
 
 <section class="connexion-wrapper">
+    <div class="connexion-admin">
+        <h2>Espace Administrateur</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary" type="submit">Se connecter</button>
+        </form>
+    </div>
     <div class="connexion-register">
+        <h2>Espace Invité</h2>
         <a href="{% url 'flux' %}" class="btn btn-primary">Entrer en mode invité</a>
     </div>
-
-    <form method="post">
-        {% csrf_token %}
-        <h3>Connectez vous</h3>
-        {{ form.as_p }}
-        <button class="btn btn-primary" type="submit">Se connecter</button>
-    </form>
-
 </section>
 
 {% endblock content %}

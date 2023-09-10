@@ -13,8 +13,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("https://makeupbyazadig.fr/wp-content/uploads/2019/11/fond-decran-wallpaper-christmas-noel-elements-gingerbread-houx-decoration-december-iphone-samsung-huawai-makeupbyazadig-tendance.jpg");
+    background-image: url("https://teliobirthday.fra1.cdn.digitaloceanspaces.com/photos_website/fond_telio2.jpg");
     background-size: cover;
+    background-repeat: repeat; /* Répéter seulement horizontalement */
+    background-position: center center;
 }
 
 header {
@@ -23,8 +25,11 @@ header {
     position:sticky;
     z-index: 3000;
     align-items: center;
-    height: 5rem;
-    background-color: white;
+    height: 12rem;
+    background-image: url("https://teliobirthday.fra1.cdn.digitaloceanspaces.com/photos_website/banniere_telio.jpg");
+    background-size: contain; /* Ajuster la taille de l'arrière-plan pour contenir l'élément */
+    background-repeat: repeat-x; /* Répéter seulement horizontalement */
+    background-position: center center;
     width: 100%;
     top: 0;
 }
@@ -41,8 +46,10 @@ header {
 
 .main-title-font-size {
     font-family: 'Shrikhand', cursive;
-    font-size: 2rem;
+    font-size: 3rem;
+    color: white;
     /*padding: 0 10rem 0 10rem;*/
+    text-shadow: 2px 2px 0px black;
     margin:0;
 }
 
@@ -54,53 +61,53 @@ header {
 
 .nav-links a {
     padding: 0 1.5rem 0 1.5rem;
-    color: black;
+    color: white;
     text-decoration: none;
+    background-color: black;
+    border-radius: 0.25rem;
+    border: 1px solid white;
 }
 
 .nav-links a:hover {
-    background-color: black;
-    color: white;
-    border-radius: 0.25rem;
+    color: red;
 }
 
-.highlight-effect-top {
-    position: absolute;
-    width: 100%;
-    height: 7px;
-    background: linear-gradient(#d3d3d3,#ffffff);
-    top: 0;
-}
 
-.highlight-effect-bottom {
-    position: absolute;
-    width: 100%;
-    height: 7px;
-    background: linear-gradient(#ffffff,#d3d3d3);
-    bottom: 0;
-}
 
 main {
     width: 90%;
     margin: 1.5rem 0 1.5rem 0;
 }
-
+.title-post{
+    color:white;
+}
 /************************/
 /* Style for login.html */
 /************************/
 
 .connexion-wrapper {
+    position: relative;
     display:flex;
-    justify-content: space-around;
+    flex-direction: column;
+    /*justify-content: space-around;*/
     align-items: center;
 }
 
-.connexion-register {
-    display:flex;
-    flex-direction: column;
-    padding-right: 2rem;
+.connexion-admin {
+    border: 1px solid green; /* Ajouter une bordure pour quadriller */
+    padding: 10px; /* Ajouter un espace intérieur pour l'esthétique */
+    margin-bottom: 20px;
+    background-color: rgb(1, 27, 60); /* Changer la couleur de fond en gris foncé */
+    color: white; /* Changer la couleur du texte en blanc */
+
 }
 
+.connexion-register {
+    border: 1px solid orange; /* Ajouter une bordure pour quadriller */
+    padding: 10px; /* Ajouter un espace intérieur pour l'esthétique */
+    background-color: rgb(0, 20, 50); /* Changer la couleur de fond en gris foncé */
+    color: white; /* Changer la couleur du texte en blanc */
+}
 /***************************/
 /* Style for register.html */
 /***************************/
@@ -168,7 +175,7 @@ main {
 }
 
 .ticket-img {
-    width: 20%;
+    width: 50%;
     object-fit: cover;
 }
 
@@ -180,7 +187,9 @@ update_review.html
 update_ticket.html
 posts.html
 */
-
+h3 {
+    color:white;
+}
 .review-wrapper {
     display: flex;
     flex-direction: column;
@@ -278,8 +287,10 @@ posts.html
     .card {
         width: 100%;
     }
-
     body {
-        background-size: 400px;
+        background-size: contain; /* Utilisez une autre taille pour les écrans mobiles si nécessaire */
     }
+/*    body {
+        background-size: 400px;
+    }*/
 }
