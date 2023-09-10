@@ -4,8 +4,9 @@
     <article class="card">
 {% endif %}
         <div class="card-header">
-            <p class="card-text">{{ post.title }}</p>
-            <p class="card-text">{{ post.time_created}}</p>
+            <h5>{{ post.title }}</h5>
+            <p class="card-text">({{ post.time_created}})</p>
+
         </div>
         <div class="card-body">
             {% if post.image %}
