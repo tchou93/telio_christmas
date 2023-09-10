@@ -142,10 +142,11 @@ main {
 .card {
     margin-top: 1rem;
     color: black;
-    border:1px solid black;
+    border:3px solid black;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, #007bff, #0056b3);
     word-break: break-word;
     width: 40rem;
-
 }
 
 .card-title {
@@ -177,6 +178,7 @@ main {
 .ticket-img {
     width: 70%;
     object-fit: cover;
+    border-radius: 20px;
 }
 
 /*
@@ -278,8 +280,20 @@ h3 {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        background-size: cover; /*Ajuster la taille de l'arrière-plan pour contenir l'élément */
     }
 
+/*header {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: 12rem;
+    background-image: url("https://teliobirthday.fra1.cdn.digitaloceanspaces.com/photos_website/banniere_telio5.jpg");
+
+    background-repeat: repeat-x;
+    background-position: center center;
+    width: 100%;
+}*/
     .review-button {
         width: 100%;
     }
