@@ -3,18 +3,18 @@
 {% else %}
     <article class="card">
 {% endif %}
-        {% if post.reserve %}
-            <div class="card-header imagenotavailable">
-        {% else %}
-            <div class="card-header">
-        {% endif %}
+
+        <div class="card-header">
             <h5>{{ post.title }}</h5>
             <p class="card-text">({{ post.time_created}})</p>
-
         </div>
         <div class="card-body">
             {% if post.image %}
-                <img class="ticket-img" src="{{post.image.url}}" alt="image">
+                {% if post.reserve %}
+                    <img class="ticket-img" src="https://aspiration-ams.fr/img/cms/PLUS%20Disponible.png" alt="image" />
+                {% else %}
+                    <img class="ticket-img" src="{{post.image.url}}" alt="image">
+                {% endif %}
             {% endif %}
             {% if post.lien_cadeau %}
                 <a href="{{post.lien_cadeau}}" style="margin-top: 10px;color: black; font-weight: bold; font-size: 18px;"> Lien où trouver le cadeau :) </a>
