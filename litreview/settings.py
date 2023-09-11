@@ -141,22 +141,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if not DEBUG:
-    from litreview.cdn.conf import (
-        AWS_ACCESS_KEY_ID,
-        AWS_SECRET_ACCESS_KEY,
-        AWS_STORAGE_BUCKET_NAME,
-        AWS_S3_ENDPOINT_URL,
-        AWS_S3_OBJECT_PARAMETERS,
-        AWS_LOCATION,
-        STATICFILES_STORAGE,
-        DEFAULT_FILE_STORAGE,
-    )
-    # print("test")
-else:
-    MEDIA_URL = "/media/"
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    MEDIA_ROOT = Path(BASE_DIR, 'media')
+# if not DEBUG:
+from litreview.cdn.conf import (
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    AWS_STORAGE_BUCKET_NAME,
+    AWS_S3_ENDPOINT_URL,
+    AWS_S3_OBJECT_PARAMETERS,
+    AWS_LOCATION,
+    STATICFILES_STORAGE,
+    DEFAULT_FILE_STORAGE,
+)
+# else:
+#     MEDIA_URL = "/media/"
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#     MEDIA_ROOT = Path(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

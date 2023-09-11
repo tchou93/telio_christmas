@@ -144,7 +144,7 @@ main {
     color: white;
     border:3px solid black;
     border-radius: 20px;
-    background: linear-gradient(to bottom, blue, white);
+    background: linear-gradient(to bottom, rgba(1,27,60,.8), white);
     word-break: break-word;
     width: 40rem;
 }
