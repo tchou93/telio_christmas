@@ -141,10 +141,10 @@ main {
 
 .card {
     margin-top: 1rem;
-    color: black;
+    color: white;
     border:3px solid black;
     border-radius: 20px;
-    background: linear-gradient(to bottom, #007bff, #0056b3);
+    background: linear-gradient(to bottom, blue, white);
     word-break: break-word;
     width: 40rem;
 }
@@ -300,8 +300,9 @@ h3 {
     }
 
     .card {
-        width: 70%;
+        width: 100%;
     }
+
     body {
         background-size: contain; /* Utilisez une autre taille pour les écrans mobiles si nécessaire */
     }
