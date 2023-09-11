@@ -154,9 +154,12 @@ main {
     justify-content: center;
     background-color: black;
 }
-.card-notavailable {
-    background-image: url("https://aspiration-ams.fr/img/cms/PLUS%20Disponible.png");
-    -webkit-filter: grayscale(100%)
+.notavailable {
+    -webkit-filter: grayscale(100%);
+}
+
+.imagenotavailable {
+    background: url("https://aspiration-ams.fr/img/cms/PLUS%20Disponible.png") center / contain;
 }
 
 .card-header {

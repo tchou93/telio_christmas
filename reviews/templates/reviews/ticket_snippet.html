@@ -1,9 +1,13 @@
 {% if post.reserve %}
-    <article class="card card-notavailable">
+    <article class="card notavailable">
 {% else %}
     <article class="card">
 {% endif %}
-        <div class="card-header">
+        {% if post.reserve %}
+            <div class="card-header imagenotavailable">
+        {% else %}
+            <div class="card-header">
+        {% endif %}
             <h5>{{ post.title }}</h5>
             <p class="card-text">({{ post.time_created}})</p>
 
